@@ -29,10 +29,10 @@ void swap_no_tmp2(int &a, int & b)
 
 int main()
 {
-    int a = 10, b =31;
+    int a = -2121, b =31;
     printf("a=%d, b=%d\n", a, b);
-    //swap_no_tmp2(a, b);
-    SWAP(a , b);
+    swap_no_tmp(a, b);
+    //SWAP(a , b);
     printf("a=%d, b=%d\n", a, b);
 
     return 0;
