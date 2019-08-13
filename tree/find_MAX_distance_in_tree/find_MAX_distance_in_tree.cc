@@ -31,15 +31,47 @@ Result GetMaxDistance(TreeNode* root)
     return ret;
 }
 
+void test2();
+void test3();
 int main()
+{
+    //test2();
+    test3();
+    return 0;
+}
+
+void test1()
 {
     int preOrder[6] = {3,2,1,7,5,6};
     int inOrder[6] = {1,2,7,3,6,5};
     TreeNode* root = buildBinaryTreeByPreorderAndInorder(preOrder, inOrder, 6);
+    printf("preOrder:");
     PreOrder(root);
+    printf("\ninOrder:");
+    InOrder(root);
     Result ret = GetMaxDistance(root);
     printf("\nmax distance=%d\n", ret.nMaxDistance);
 
-    return 0;
 }
 
+void test2()
+{
+    int preOrder[7] = {3,2,1,4,6,8,9};
+    int inOrder[7] = {4,1,2,8,9,6,3};
+    TreeNode* root = buildBinaryTreeByPreorderAndInorder(preOrder, inOrder, 6);
+    printf("preOrder:");
+    PreOrder(root);
+    printf("\ninOrder:");
+    InOrder(root);
+    Result ret = GetMaxDistance(root);
+    printf("\nmax distance=%d\n", ret.nMaxDistance);
+}
+
+void test3()
+{
+    int preOrder[2] = {1, 9};
+    int inOrder[2] = {1, 9};
+    TreeNode* root = buildBinaryTreeByPreorderAndInorder(preOrder, inOrder, 2);
+    Result ret = GetMaxDistance(root);
+    printf("max distance=%d\n", ret.nMaxDistance);
+}
