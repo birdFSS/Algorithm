@@ -12,6 +12,7 @@ typedef struct
     int numVertexs, numEdges;
 }MGraph;
 
+Boolean visited[MAXVEX];
 
 
 void TestGraph(MGraph *G);
@@ -71,17 +72,17 @@ void createGraph(MGraph* G)
 }
 
 
-
-void DFS(MGraph G, int i)
+void DFS(MGraph G, int i)   //i表示当前结点下标
 {
-    Boolean visited[MAXVEX];
     int j;
     visited[i] = TRUE;
-    printf("%5d --- %-5c\n", i, G.vexs[i]);
+    //printf("%5d --- %-5c\n", i, G.vexs[i]);
+    printf("%2c", G.vexs[i]);
     for(j=0;j<G.numVertexs;j++)
     {
         if(G.arc[i][j] == 1 && !visited[j])
         {
+            printf("-->");
             DFS(G, j);
         }
     }
@@ -89,13 +90,12 @@ void DFS(MGraph G, int i)
 
 void DFSTraverse(MGraph G)
 {
-    Boolean visited[MAXVEX];
     int i;
     for(i=0;i<G.numVertexs;i++)
     {
         visited[i] = FALSE;
     }
-    printf(">>vertex\nindex --- value\n");
+    printf(">>vertex\n");
     for(i=0;i<G.numVertexs; i++)
     {
         if(!visited[i])
@@ -103,12 +103,11 @@ void DFSTraverse(MGraph G)
             DFS(G, i);
         }
     }
-    printf("<<vertex\n");
+    printf("\n<<vertex\n");
 }
 
 void BFSTraverse(MGraph G)
 {
-    Boolean visited[MAXVEX];
     int i,j;
     Queue Q;
     initQueue(&Q);
