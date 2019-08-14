@@ -65,7 +65,7 @@ TreeNode* ConstructCore(int * startPreorder, int *endPreorder, int *startInorder
     int rootValue = startPreorder[0];
     TreeNode* root = new TreeNode(rootValue);//新结点
     //边界条件
-    if(startPreorder == startInorder)
+    if(startPreorder == endPreorder)
     {
         if(startInorder == endInorder && *startInorder == *startPreorder)
         {
