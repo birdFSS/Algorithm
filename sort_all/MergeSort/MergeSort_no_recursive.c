@@ -30,10 +30,11 @@ void Merge_pass(int * A, int * tmpA, int N, int length)
     {
         Merge(A, tmpA, i, i+length, i + 2*length-1);
     }
-    if(i+length < N)
+
+    if(i+length < N)    //归并最后的两个子列
     {
         Merge(A, tmpA, i, i+length, N-1);
-    }else{
+    }else{              //不存在两个子列，直接复制即可
         for(int j=i; j < N; ++j)
             tmpA[j] = A[j];
     }
