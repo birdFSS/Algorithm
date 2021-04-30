@@ -10,3 +10,5 @@
 libs/
 core
 log/
+build/
+!CMakeLists.txt
