@@ -3,12 +3,12 @@
 
 #define SWAP(x,y) do{(x)=(x)^(y);(y)=(x)^(y);(x)=(x)^(y);}while(0)
 
-void adjustDown(ElemType *arr, size_t k, size_t len, compFunc cfunc)
+void hsAdjust(ElemType *arr, size_t k, size_t len, compFunc cfunc)
 {
     arr[0] = arr[k];
     size_t i = k << 1;
-    while(i <= len) {
-        if(i < len && cfunc(arr + i, arr + i + 1)) {
+    while(i < len) {
+        if(i < len - 1 && cfunc(arr + i, arr + i + 1)) {
             ++i;
         }
 
@@ -23,21 +23,21 @@ void adjustDown(ElemType *arr, size_t k, size_t len, compFunc cfunc)
     arr[k] = arr[0];
 }
 
-void BuildMaxHeap(ElemType *arr, size_t len, compFunc cfunc)
+void hsBuildHeap(ElemType *arr, size_t len, compFunc cfunc)
 {
     for(size_t i = len >> 1; i != 0; --i)
     {
-        adjustDown(arr, i, len, cfunc);
+        hsAdjust(arr, i, len, cfunc);
     }
 }
 
 void HeapSort(ElemType *arr, size_t len, compFunc cfunc)
 {
-    BuildMaxHeap(arr, len, cfunc);
+    hsBuildHeap(arr, len, cfunc);
     int i;
     for(i = len; i > 1; --i)
     {
         SWAP(arr[i], arr[1]);
-        adjustDown(arr, 1, i-1, cfunc);
+        hsAdjust(arr, 1, i-1, cfunc);
     }
 }
